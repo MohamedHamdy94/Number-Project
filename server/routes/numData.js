@@ -12,10 +12,10 @@ numData.get('/:number', async (req, res) => {
     numInfo._id = new mongoose.Types.ObjectId();
     const saveSearch = await SearchResult.insertMany(numInfo);
   } else {
-    res.status(404).send({ message: 'Number Not Found' });
+    const saveSearch = await SearchResult.insertMany({ number: req.params.number });
+    res.send(numInfo);
   }
 });
-
 
 // numData.get('/?number=:number', async (req, res) => {
 //   console.log('num don')

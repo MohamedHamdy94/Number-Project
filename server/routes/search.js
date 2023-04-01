@@ -7,7 +7,7 @@ const search = express.Router();
 search.get('/numbers', async (req, res) => {
   const searchResult = await SearchResult.find({});
   if (searchResult) {
-    res.send({searchResult});
+    res.send(searchResult);
   } else {
     res.status(404).send({ message: 'search Result Not Found' });
   }
