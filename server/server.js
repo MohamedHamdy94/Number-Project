@@ -20,7 +20,8 @@ mongoose
     console.log(err.message);
   });
 
-  // app.use('/api/seed', seedRouter);
+  
+  app.use('/api/seed', seedRouter);
   app.use('/api/searchnumder', numData);
   app.use('/api/searchnesult', search);
 
