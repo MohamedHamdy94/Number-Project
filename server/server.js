@@ -1,4 +1,6 @@
 import express from 'express';
+ import path from 'path';
+//const path =require('path')
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -25,6 +27,11 @@ mongoose
   app.use('/api/searchnumder', numData);
   app.use('/api/searchnesult', search);
 
+  const __dirname = path.resolve();
+  app.use(express.static(path.join(__dirname, '/client/build')));
+  app.get('*', (req, res) =>
+    res.sendFile(path.join(__dirname, '/client/build/index.html'))
+  );
   app.use((err, req, res, next) => {
     res.status(500).send({ message: err.message });
   });
